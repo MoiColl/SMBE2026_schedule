@@ -1,5 +1,9 @@
 # SMBE 2026 — Interactive Program
 
+Original idea was from Laruits Skov, I just provided Claude tokens
+
+Disclamer: Use it at your own risk!
+
 `SMBE2026_program_interactive.html` is a single, self-contained file that shows the full SMBE 2026 program and lets you build your own schedule.
 
 ## How to use it
