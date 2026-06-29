@@ -1,7 +1,8 @@
 # SMBE 2026 — Interactive Program & Poster Browser
 
 > ⚠️ **Unofficial**, built from the published PDFs. Check the official programme for authoritative times, rooms, and changes.
-> Laurits Skov had the original idea, I merely provided Claude tokens and played with prompts.
+
+> Laurits Skov had the original idea to build these nice schedule tables, I merely provided Claude tokens and played with prompts.
 
 Lightweight, self-contained web pages for navigating the **SMBE 2026 Annual Meeting**. Browse the talks and posters, search them, and build your own schedule and poster shortlist — all in the browser, no account or login.
 
