@@ -1,24 +1,25 @@
-# SMBE 2026 — Interactive Program
+# SMBE 2026 — Interactive Program & Poster Browser
 
->Original idea was from Laruits Skov, I just provided Claude tokens
+Lightweight, self-contained web pages for navigating the **SMBE 2026 Annual Meeting**. Browse the talks and posters, search them, and build your own schedule and poster shortlist — all in the browser, no account or login.
 
->Disclamer: Use it at your own risk!
+> ⚠️ **Unofficial**, built from the published PDFs. Check the official programme for authoritative times, rooms, and changes.
 
-`SMBE2026_program_interactive.html` is a single, self-contained file that shows the full SMBE 2026 program and lets you build your own schedule.
+## Files
 
-## How to use it
+- `SMBE2026_program_interactive.html` — the full talk programme.
+- `SMBE2026_posters.html` — the poster browser.
 
-Open the file in any web browser (double-click it). You'll see two tabs at the top:
+## Programme
 
-- **Full program** — every day, with parallel sessions lined up by time. Click (or tap) any talk to add it to your schedule; a selected talk turns orange with a check mark. Click it again to remove it.
-- **My schedule** — your selected talks, sorted by day and time. Talks that overlap are flagged **⚠ clash** so you can spot conflicts. The **×** button removes a talk, **Print** makes a clean printout, and **Clear** empties the list.
+**Full program** tab shows each day with parallel sessions lined up by time; each session lists its room and chair, and each talk shows speaker, affiliation, and title. Click a talk to add it to the **My schedule** tab, which sorts your picks by time and flags overlaps with a ⚠ clash marker.
 
-## Your selections are saved automatically
+## Posters
 
-Your picks are stored in the browser itself, so you can close the file and reopen it later and your schedule will still be there — no account or internet needed.
+**Browse** tab lets you **search** (title, presenter, institution, theme, country, board number) and filter by **day**, **theme**, or **location**, with a **Group by** toggle (theme / location / board order). Click a poster to add it to **My posters**, which lists your picks in board-number order — a handy walking route. Sessions: Group A = Mon 18:00–20:00, Group B = Tue 18:00–20:00.
 
-## Laptop vs. phone
+## Good to know
 
-The page adapts to your screen: on a **laptop** it shows the full side-by-side grid, and on a **phone** it reflows into an easy, tappable vertical list. Just email the file to yourself or save it to your phone (Files / iCloud / Google Drive) and open it there.
-
-One thing to know: because the schedule is saved inside the browser, it stays on the device where you made it. A schedule you build on your laptop will **not** automatically appear on your phone, and vice versa — so build it on whichever device you'll have with you at the conference.
+- **Selections are saved in your browser**, per device — they don't sync between your laptop and phone, so build your list on whichever device you'll bring.
+- **On a phone**, just open the site link in Safari/Chrome; the layout adapts and selections save normally. Use *Add to Home Screen* for quick access.
+- Use the **Print** button on either page to print or save a PDF.
+- Posters: 8 blank boards (reserved/withdrawn) are omitted, leaving 752 total. Pages are a snapshot and won't auto-update.
