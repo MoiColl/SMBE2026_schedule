@@ -13,9 +13,17 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;margin:0;color:#1a1a1a;backgr
 .wrap{padding:14px 18px;max-width:1500px;margin:0 auto}
 .day{padding:4px 0 18px}
 h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
+.day>h1{cursor:pointer;user-select:none;display:flex;align-items:center;gap:8px}
+.arr{display:inline-block;transition:transform .15s;font-size:.72em;opacity:.7}
+.day.col .daybody{display:none}
+.day.col>h1 .arr{transform:rotate(-90deg)}
 .sub{font-size:11px;color:#666;margin:0 0 12px}
+.lbtn{background:#eef3f7;border:1px solid #cfd9e2;color:#0b3d63;border-radius:6px;padding:4px 9px;font-size:11px;cursor:pointer;font-weight:600;margin-right:6px}
 .block{margin:0 0 18px;border:1px solid #e2e2e2;border-radius:8px;overflow:hidden;background:#dcdcdc}
-.blockhdr{background:#0b3d63;color:#fff;font-weight:600;font-size:12px;padding:6px 10px}
+.blockhdr{background:#0b3d63;color:#fff;font-weight:600;font-size:12px;padding:6px 10px;cursor:pointer;user-select:none;display:flex;align-items:center;gap:8px}
+.block.col .blockbody{display:none}
+.block.col .blockhdr .arr{transform:rotate(-90deg)}
+@media print{.day.col .daybody,.block.col .blockbody{display:block!important}.arr{display:none}}
 .grid{display:grid;gap:1px;background:#dcdcdc}
 .colhdr{background:#eef3f7;padding:6px 8px;font-weight:600;font-size:10.5px;color:#0b3d63;border-bottom:1px solid #cfd9e2}
 .colhdr .room{display:block;color:#7a7a7a;font-weight:600;font-size:9px;text-transform:uppercase;letter-spacing:.3px}
@@ -83,9 +91,9 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 <button class="btn" onclick="window.print()">Print</button>
 <button class="btn" onclick="clearAll()">Clear</button></div>
 <div class="wrap">
-<div id="program"><div class="legend">Tap any talk to add it to <b>My schedule</b>. Your picks are saved on this device.</div>
-<section class="day"><h1>Sunday</h1><div class="sub">Sunday, June 28, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
-<div class="block"><div class="blockhdr">17:00 – 17:15</div>
+<div id="program"><div class="legend">Tap a day or session header to expand/collapse. Tap any talk to add it to <b>My schedule</b> (saved on this device).<div style="margin-top:8px"><button class="lbtn" onclick="setAllDays(false)">▾ Expand all</button><button class="lbtn" onclick="setAllDays(true)">▸ Collapse all</button></div></div>
+<section class="day col"><h1 onclick="toggleDay(this)"><span class="arr">▾</span>Sunday</h1><div class="daybody"><div class="sub">Sunday, June 28, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>17:00 – 17:15</div><div class="blockbody">
 <div class="grid single" style="grid-template-columns:repeat(1,1fr)">
 <div class="colhdr"><span class="room">Main</span>Opening with Local Chair Tom Gilbert</div>
 <div class="cell" data-id="SundayJu_Main_170000_0" onclick="toggle(this)"><div class="who">Tom Gilbert</div><div class="aff">University of Copenhagen</div><div class="ttl">Opening with Local Chair Tom Gilbert</div></div>
@@ -96,7 +104,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">17:15 – 18:15</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>17:15 – 18:15</div><div class="blockbody">
 <div class="grid single" style="grid-template-columns:repeat(1,1fr)">
 <div class="colhdr"><span class="room">Main</span>Opening Presidential address with Juliette de Meaux</div>
 <div class="cell" data-id="SundayJu_Main_171500_0" onclick="toggle(this)"><div class="who">Prof Juliette De Meaux</div><div class="aff">University Of Cologne</div><div class="ttl">Presidental adress</div></div>
@@ -107,9 +116,11 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
+</div>
+</div>
 </section>
-<section class="day"><h1>Monday</h1><div class="sub">Monday, June 29, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
-<div class="block"><div class="blockhdr">09:00 – 09:50</div>
+<section class="day col"><h1 onclick="toggleDay(this)"><span class="arr">▾</span>Monday</h1><div class="daybody"><div class="sub">Monday, June 29, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>09:00 – 09:50</div><div class="blockbody">
 <div class="grid single" style="grid-template-columns:repeat(1,1fr)">
 <div class="colhdr"><span class="room">Main</span>Plenary Talk with Emma Teeling<span class="chair">Chair: Dr Hernán Morales</span></div>
 <div class="cell" data-id="MondayJu_Main_090000_0" onclick="toggle(this)"><div class="who">Emma C Teeling</div><div class="aff">School of Biology and Environmental Science, University College Dublin</div><div class="ttl">Bats: Genomes, phylogenies, fossils and cures ?</div></div>
@@ -120,7 +131,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">10:20 – 12:20</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>10:20 – 12:20</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 1: Population genetics and genomics 1<span class="chair">Chair: Shyam Gopalakrishnan</span></div>
@@ -278,7 +290,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">13:20 – 15:20</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>13:20 – 15:20</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Grad student award symposia<span class="chair">Chair: Prof Juliette De Meaux</span></div>
@@ -312,7 +325,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">15:50 – 17:50</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>15:50 – 17:50</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 2: Comparative genomics and phylogenetics 1<span class="chair">Chair: Josefin Stiller</span></div>
@@ -469,9 +483,11 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
+</div>
+</div>
 </section>
-<section class="day"><h1>Tuesday</h1><div class="sub">Tuesday, June 30, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
-<div class="block"><div class="blockhdr">09:00 – 09:50</div>
+<section class="day col"><h1 onclick="toggleDay(this)"><span class="arr">▾</span>Tuesday</h1><div class="daybody"><div class="sub">Tuesday, June 30, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>09:00 – 09:50</div><div class="blockbody">
 <div class="grid single" style="grid-template-columns:repeat(1,1fr)">
 <div class="colhdr"><span class="room">Main</span>Plenary Talk with Mehmet Somel<span class="chair">Chair: Hannes Schroeder</span></div>
 <div class="cell" data-id="TuesdayJ_Main_090000_0" onclick="toggle(this)"><div class="who">Mehmet Somel</div><div class="aff">Middle East Technical University</div><div class="ttl">Human societies, past and present, in light of ancient DNA</div></div>
@@ -482,7 +498,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">10:20 – 12:20</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>10:20 – 12:20</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 3: Ancient and historical genomics<span class="chair">Chair: Dr Rute Fonseca</span></div>
@@ -656,7 +673,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">13:20 – 15:20</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>13:20 – 15:20</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 4: Molecular and genome evolution 1<span class="chair">Chair: Mark D. Scherz</span></div>
@@ -860,7 +878,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">15:50 – 17:50</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>15:50 – 17:50</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 5: Population genetics and genomics 2<span class="chair">Chair: Michael Poulsen</span></div>
@@ -1049,9 +1068,11 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
+</div>
+</div>
 </section>
-<section class="day"><h1>Wednesday</h1><div class="sub">Wednesday, July 1, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
-<div class="block"><div class="blockhdr">09:00 – 09:50</div>
+<section class="day col"><h1 onclick="toggleDay(this)"><span class="arr">▾</span>Wednesday</h1><div class="daybody"><div class="sub">Wednesday, July 1, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>09:00 – 09:50</div><div class="blockbody">
 <div class="grid single" style="grid-template-columns:repeat(1,1fr)">
 <div class="colhdr"><span class="room">Main</span>Plenary Talk with Nandita Garud<span class="chair">Chair: Martin Sikora</span></div>
 <div class="cell" data-id="Wednesda_Main_090000_0" onclick="toggle(this)"><div class="who">Nandita Garud</div><div class="aff">University of California (UCLA)</div><div class="ttl">Presentation title: Evolution in the human gut microbiome</div></div>
@@ -1062,7 +1083,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">10:20 – 12:20</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>10:20 – 12:20</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 6: Comparative genomics and phylogenetics 2<span class="chair">Chair: Morten Limborg</span></div>
@@ -1245,7 +1267,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">12:20 – 13:20</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>12:20 – 13:20</div><div class="blockbody">
 <div class="grid single" style="grid-template-columns:repeat(1,1fr)">
 <div class="colhdr"><span class="room">Carstensen (lower level)</span>SMBE Business Meeting<span class="chair">Chair: Prof Juliette De Meaux</span></div>
 <div class="cell" data-id="Wednesda_Carste_122000_0" onclick="toggle(this)"><div class="who">Prof Juliette De Meaux</div><div class="aff">University Of Cologne</div><div class="ttl">SMBE Business Meeting presentation</div></div>
@@ -1256,7 +1279,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">13:20 – 15:20</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>13:20 – 15:20</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 8: Molecular and genome evolution 3<span class="chair">Chair: Dr Christina Hvilsom</span></div>
@@ -1436,7 +1460,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">15:20 – 15:50</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>15:20 – 15:50</div><div class="blockbody">
 <div class="grid single" style="grid-template-columns:repeat(1,1fr)">
 <div class="colhdr"><span class="room">Vandsalen</span>Publishing policies and practices: a Q&amp;A with the Editors in Chief of GBE and MBE<span class="chair">Chair: Laura Katz</span></div>
 <div class="cell" data-id="Wednesda_Vandsa_152000_0" onclick="toggle(this)"><div class="who">Laura Katz</div><div class="aff">Smith College</div><div class="ttl">Editors will be available for Q&amp;A</div></div>
@@ -1447,7 +1472,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">15:50 – 17:50</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>15:50 – 17:50</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr 1fr 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 9: Molecular and genome evolution 4<span class="chair">Chair: Jazmin Ramos Madrigal</span></div>
@@ -1643,9 +1669,11 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
+</div>
+</div>
 </section>
-<section class="day"><h1>Thursday</h1><div class="sub">Thursday, July 2, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
-<div class="block"><div class="blockhdr">09:10 – 10:00</div>
+<section class="day col"><h1 onclick="toggleDay(this)"><span class="arr">▾</span>Thursday</h1><div class="daybody"><div class="sub">Thursday, July 2, 2026 &nbsp;&middot;&nbsp; SMBE 2026 — Society for Molecular Biology &amp; Evolution</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>09:10 – 10:00</div><div class="blockbody">
 <div class="grid single" style="grid-template-columns:repeat(1,1fr)">
 <div class="colhdr"><span class="room">Main</span>Plenary talk with Moises Expositi-Alonso<span class="chair">Chair: Professor Eline Lorenzen</span></div>
 <div class="cell" data-id="Thursday_Main_091000_0" onclick="toggle(this)"><div class="who">Moises Exposito-Alonso</div><div class="aff">University of California Berkeley and Howard Hughes Medical Institute</div><div class="ttl">Rapid adaptation vs. the Anthropocene</div></div>
@@ -1656,7 +1684,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">10:00 – 11:30</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>10:00 – 11:30</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr 1fr 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Open 10a: Population genetics and genomics 3a<span class="chair">Chair: Rasmus Heller</span></div>
@@ -1728,7 +1757,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 </div>
 </div>
 </div>
-<div class="block"><div class="blockhdr">11:30 – 13:00</div>
+</div>
+<div class="block"><div class="blockhdr" onclick="toggleBlock(this)"><span class="arr">▾</span>11:30 – 13:00</div><div class="blockbody">
 <div class="grid" style="grid-template-columns:70px 1fr">
 <div class="colhdr" style="grid-column:1;grid-row:1">Time</div>
 <div class="colhdr" style="grid-column:2;grid-row:1"><span class="room">Main</span>Awards and closing<span class="chair">Chair: Prof Juliette De Meaux</span></div>
@@ -1744,6 +1774,8 @@ h1{font-size:20px;margin:14px 0 2px;color:#0b3d63}
 <div class="mcell" data-id="Thursday_Main_113000_0" onclick="toggle(this)"><div class="mtime">11:30–12:30</div><div class="mbody"><div class="who">Prof Juliette De Meaux</div><div class="aff">University Of Cologne</div><div class="ttl">SMBE Present Awards</div></div><div class="mchk">✓</div></div>
 <div class="mcell" data-id="Thursday_Main_123000_1" onclick="toggle(this)"><div class="mtime">12:30–12:35</div><div class="mbody"><div class="who">Tom Gilbert</div><div class="aff">University of Copenhagen</div><div class="ttl">Final words from SMBE 2026</div></div><div class="mchk">✓</div></div>
 <div class="mcell" data-id="Thursday_Main_123500_2" onclick="toggle(this)"><div class="mtime">12:35–12:45</div><div class="mbody"><div class="who">Nadia Aubin-Horth</div><div class="aff">Université Laval</div><div class="ttl">SMBE 2027</div></div><div class="mchk">✓</div></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1763,6 +1795,9 @@ function setPick(id,on){if(on)picks.add(id);else picks.delete(id);save();refresh
 function toggle(el){const id=el.dataset.id;setPick(id,!picks.has(id));}
 function removeTalk(id){setPick(id,false);}
 function clearAll(){if(!picks.size)return;if(confirm('Remove all '+picks.size+' selected talks?')){picks.clear();save();refreshCells();renderSchedule();}}
+function toggleDay(h){h.parentNode.classList.toggle('col');}
+function toggleBlock(h){h.parentNode.classList.toggle('col');}
+function setAllDays(col){document.querySelectorAll('#program .day').forEach(d=>d.classList.toggle('col',col));window.scrollTo(0,0);}
 function showView(v){
   document.getElementById('program').style.display=v==='program'?'block':'none';
   document.getElementById('schedule').style.display=v==='schedule'?'block':'none';
