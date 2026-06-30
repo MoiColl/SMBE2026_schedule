@@ -1,5 +1,7 @@
 # SMBE 2026 — Interactive Program & Poster Browser
 
+https://moicoll.github.io/SMBE2026_schedule/index.html
+
 > ⚠️ **Unofficial**, built from the published PDFs. Check the official programme for authoritative times, rooms, and changes.
 
 > Laurits Skov had the original idea to build these nice schedule tables, I merely provided Claude tokens and played with prompts.
